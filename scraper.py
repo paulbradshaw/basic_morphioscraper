@@ -6,11 +6,12 @@ import lxml.html
 #
 # # Read in a page
 html = scraperwiki.scrape("http://uk.soccerway.com/teams/netherlands/fortuna-sittard/")
-print html
 #
 # # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
+root = lxml.html.fromstring(html)
+tds = root.cssselect("div[align='left']")
+print tds
+# page_team_1_block_team_squad_9-table > tbody:nth-child(2) > tr > td:nth-child(2) > div:nth-child(1) > a
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
